@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Hondi{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Agence shapata Immo</h1>
+        <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+    </div>
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+            <div class="row flex">
+                {% for property in properties %}
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{{ path('property.show', {id: property.id, slug:property.slug}) }}">{{ property.title  }}</a>
+                                </h5>
+                                <p class="card-text" >{{ property.city }} ({{ property.postalCode }})</p>
+                                <div class="text-primary" style="font-weight: bold; font-size: 2rem">{{ property.getFormattedPrice() }} €</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+
+
+{% endblock %}
